@@ -11,7 +11,7 @@ class Api():
 
 	apiKey = ''
 	apiSecret = ''
-	apiUrl = 'http://api.cryptorg.local:8080/'
+	apiUrl = 'https://api.cryptorg.net/'
 
 	""" Cryptorg api constructor """
 	def __init__(self, apiKey, apiSecret):
