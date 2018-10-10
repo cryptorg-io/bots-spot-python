@@ -11,7 +11,7 @@ class Api():
 
 	apiKey = ''
 	apiSecret = ''
-	apiUrl = 'https://api.cryptorg.net/'
+	apiUrl = 'http://api.cryptorg.local:8080/'
 
 	""" Cryptorg api constructor """
 	def __init__(self, apiKey, apiSecret):
@@ -221,11 +221,11 @@ class Api():
 		else:
 			return self.sendRequest('GET', 'deal/update-take-profit', query)
 
-    """ Get analytics """
-    def getAnalytics(self, params = ''):
+	""" Get analytics """
+	def dealInfo(self, params = ''):
 
 		try:
-			query = "start=" + params['start'] + "&end=" + params['end']
+			query = "dealId=" + str(params['dealId'])
 			pass
 
 		except Exception as e:
