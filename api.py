@@ -1,8 +1,8 @@
-from Cryptorg import Api
+from cryptorg import Api
 
-Cryptorg = Api('YOUR_API_KEY', 'YOUR_API_SECRET');
+cryptorg = Api('API_KEY', 'API_SECRET');
 
 """ First arg must be an array of parrams """
 """ Second arg must be an array of attributes """
 
-print(Cryptorg.status());
+print(cryptorg.botList());

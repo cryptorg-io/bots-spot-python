@@ -11,7 +11,7 @@ class Api():
 
 	apiKey = ''
 	apiSecret = ''
-	apiUrl = 'http://api.cryptorg.local:8080/'
+	apiUrl = 'https://api.cryptorg.net/'
 
 	""" Cryptorg api constructor """
 	def __init__(self, apiKey, apiSecret):
@@ -65,7 +65,7 @@ class Api():
 		else:
 			return self.sendRequest('POST', 'bot/create-preset', query, attributes)
 
-	""" Advanced create bot """
+	""" Update bot settings """
 	def updateBot(self, params, attributes):
 
 		try:
@@ -104,7 +104,7 @@ class Api():
 		else:
 			return self.sendRequest('GET', 'bot/activate', query)
 
-	""" Activate bot """
+	""" Deactivate bot """
 	def deactivateBot(self, params):
 		
 		try:
@@ -129,19 +129,6 @@ class Api():
 
 		else:
 			return self.sendRequest('GET', 'bot/start-force', query)
-
-	""" Deactivate bot """
-	def deleteBot(self, params):
-		
-		try:
-			query = "botId=" + str(params['botId'])
-			pass
-
-		except Exception as e:
-			return { 'status': 'ok', 'result': 'false', 'message': e}
-
-		else:
-			return self.sendRequest('GET', 'bot/deactivate', query)
 
 	""" Get bot logs """
 	def getBotLogs(self, params):
@@ -219,10 +206,10 @@ class Api():
 			return { 'status': 'ok', 'result': 'false', 'message': e}
 
 		else:
-			return self.sendRequest('GET', 'deal/update-take-profit', query)
+			return self.sendRequest('GET', 'deal/info', query)
 
 	""" Get analytics """
-	def dealInfo(self, params = ''):
+	def getAnalytics(self, params = ''):
 
 		try:
 			query = "dealId=" + str(params['dealId'])
@@ -251,10 +238,11 @@ class Api():
 			"CTG-API-NONCE": str (nonce)
 		}
 
+		print(headers);
+
 		signUrl = self.apiUrl + url + '?' + query
 
 		if (method == 'GET'):
-			print('get')
 			response = requests.get(url = signUrl, headers = headers).text
 
 		if (method == 'POST'):
