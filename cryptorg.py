@@ -238,8 +238,6 @@ class Api():
 			"CTG-API-NONCE": str (nonce)
 		}
 
-		print(headers);
-
 		signUrl = self.apiUrl + url + '?' + query
 
 		if (method == 'GET'):
