@@ -224,7 +224,7 @@ class Api():
 	""" Send request to api.cryptorg.net """
 	def sendRequest(self, method, url, query = '', params = ''):
 
-		nonce = str(int(round(time.time() * 1000)))
+		nonce = str(int(time.time()))
 
 		authStr = url + '/' + nonce + '/' + query
 		strForSign = base64.b64encode(authStr.encode('utf-8'))
@@ -235,8 +235,10 @@ class Api():
 
 			"CTG-API-SIGNATURE": str (hash), 
 			"CTG-API-KEY": str (self.apiKey), 
-			"CTG-API-NONCE": str (nonce)
+			"CTG-API-NONCE": nonce
 		}
+
+		print(headers)
 
 		signUrl = self.apiUrl + url + '?' + query
 
