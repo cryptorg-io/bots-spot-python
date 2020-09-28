@@ -26,6 +26,20 @@ class Api():
 	def botList(self):
 		return self.sendRequest('GET', 'bot/all')
 
+	""" Get withdrawal history """
+	def withdrawalHistory(self, params):
+		
+		try:
+			query = "asset=" + str(params['asset'])
+			pass
+
+		except Exception as e:
+			return { 'status': 'ok', 'result': 'false', 'message': e}
+
+		else:
+			return self.sendRequest('GET', 'account/get-withdrawal-history', query)
+		
+
 	""" Get bot details """
 	def botInfo(self, params):
 		
